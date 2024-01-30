@@ -19,18 +19,6 @@
       align-items: center;
       justify-content: center;
     }
-    .video{
-      width: 100%;
-      height: auto;
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow: hidden;
-     filter: grayscale();
-
-    }
 
     .container {
       height: 22rem;
@@ -52,11 +40,11 @@
     }
     .container:hover{
       background: rgba(0, 0, 0, 0.43);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(3.6px);
--webkit-backdrop-filter: blur(3.6px);
-border-radius: 5px;
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(3.6px);
+      -webkit-backdrop-filter: blur(3.6px);
+      border-radius: 5px;
     }
 
     .time {
@@ -93,7 +81,7 @@ border-radius: 5px;
       border-radius: 5px;
     }
   </style>
-  <body>
+  <body style="background-color: rgb(0, 0, 0);">
     <!-- <video src="video.mp4" class="video" autoplay muted loop></video> -->
     <img src="view-misty-forest-night.jpg" alt="" class="video">
     <div class="container">
@@ -110,7 +98,7 @@ border-radius: 5px;
       <button id="reset">Reset</button><br>
     </div>
   </body>
-
+  
   <script>
     window.onload = function () {
       let minutes = 0;
