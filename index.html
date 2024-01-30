@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      width: 98vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video{
+      width: 100%;
+      height: auto;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+     filter: grayscale();
+
+    }
+
+    .container {
+      height: 22rem;
+      padding: 1rem;
+      max-width: 300px;
+      text-align: center;
+      position: relative;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.822);
+      transition: .5s;
+      
+
+      background: rgba(0, 0, 0, 0.43);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(100, 100, 100, 0.1);
+      backdrop-filter: blur(2.6px);
+      -webkit-backdrop-filter: blur(2.6px);
+      border: 1px solid rgba(255, 248, 248, 1);
+    }
+    .container:hover{
+      background: rgba(0, 0, 0, 0.43);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3.6px);
+-webkit-backdrop-filter: blur(3.6px);
+border-radius: 5px;
+    }
+
+    .time {
+      padding: 1rem 0;
+      font-size: 2rem;
+    }
+
+    h1,h2,
+    p {
+      color: #f8f8f8;
+    }
+
+    button {
+      padding: 0.4rem 5rem;
+      margin: 0 0.2rem;
+      border-radius: 10px;
+      border: 1px solid #f8f8f8;
+      color: white;
+      margin: 10px;
+      font-size: 20px;
+
+      background: rgba(255, 248, 248, 0);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(2.6px);
+      -webkit-backdrop-filter: blur(2.6px);
+      border: 1px solid rgba(255, 248, 248, 1);
+      transition: .5s;
+    }
+
+    button:hover {
+      background-color: rgba(77, 76, 76, 0.4);
+      color: #f8f8f8;
+      border-radius: 5px;
+    }
+  </style>
+  <body>
+    <!-- <video src="video.mp4" class="video" autoplay muted loop></video> -->
+    <img src="view-misty-forest-night.jpg" alt="" class="video">
+    <div class="container">
+      <h1>Stopwatch</h1>
+      <h2>Prodigy Infotech Task2</h2>
+      <p class="time">
+        <span id="minutes">00</span>:<span id="seconds">00</span>:<span
+          id="tens"
+          >00</span
+        >
+      </p>
+      <button id="start">Start</button><br>
+      <button id="stop">Stop</button><br>
+      <button id="reset">Reset</button><br>
+    </div>
+  </body>
+
+  <script>
+    window.onload = function () {
+      let minutes = 0;
+      let seconds = 0;
+      let tens = 0;
+      let appendMinutes = document.querySelector('#minutes');
+      let appendTens = document.querySelector('#tens');
+      let appendSeconds = document.querySelector('#seconds');
+      let startBtn = document.querySelector('#start');
+      let stopBtn = document.querySelector('#stop');
+      let resetBtn = document.querySelector('#reset');
+      let Interval;
+
+      const startTimer = () => {
+        tens++;
+        if (tens <= 9) {
+          appendTens.innerHTML = '0' + tens;
+        }
+        if (tens > 9) {
+          appendTens.innerHTML = tens;
+        }
+
+        if (tens > 99) {
+          seconds++;
+          appendSeconds.innerHTML = '0' + seconds;
+          tens = 0;
+          appendTens.innerHTML = '0' + 0;
+        }
+
+        if (seconds > 9) {
+          appendSeconds.innerHTML = seconds;
+        }
+
+        if (seconds > 59) {
+          minutes++;
+          appendMinutes.innerHTML = '0' + minutes;
+          seconds = 0;
+          appendSeconds.innerHTML = '0' + 0;
+        }
+      };
+
+      startBtn.onclick = () => {
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
+      };
+
+      stopBtn.onclick = () => {
+        clearInterval(Interval);
+      };
+
+      resetBtn.onclick = () => {
+        clearInterval(Interval);
+        tens = '00';
+        seconds = '00';
+        minutes = '00';
+        appendTens.innerHTML = tens;
+        appendSeconds.innerHTML = seconds;
+        appendMinutes.innerHMTL = minutes;
+      };
+    };
+  </script>
+</html>
